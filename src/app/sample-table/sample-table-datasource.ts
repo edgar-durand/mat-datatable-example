@@ -36,7 +36,7 @@ const EXAMPLE_DATA: SampleTableItem[] = [
  * (including sorting, pagination, and filtering).
  */
 export class SampleTableDataSource extends DataSource<SampleTableItem>{
-  data: SampleTableItem[] = this.datatableService.data$.value;
+  data: any[] = this.datatableService.data$.value;
 
   paginator: MatPaginator | undefined;
   sort: MatSort | undefined;
@@ -56,7 +56,7 @@ export class SampleTableDataSource extends DataSource<SampleTableItem>{
       // stream for the data-table to consume.
       return merge(this.datatableService.data$, this.paginator.page, this.sort.sortChange)
         .pipe(map(() => {
-          return this.getPagedData(this.getSortedData([...this.datatableService.data$.value ]));
+          return this.getPagedData(this.getSortedData([...<any[]>this.datatableService.data$.value ]));
         }));
     } else {
       throw Error('Please set the paginator and sort on the data source before connecting.');

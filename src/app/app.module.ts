@@ -17,12 +17,16 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import {DatatableService} from "./services/datatable.service";
 import {HttpService} from "./services/http.service";
+import { LoadXlsxComponent } from './load-xlsx/load-xlsx.component';
+import {MatFormFieldModule} from "@angular/material/form-field";
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     SampleTableComponent,
-    MyNavComponent
+    MyNavComponent,
+    LoadXlsxComponent
   ],
   imports: [
     BrowserModule,
@@ -36,7 +40,9 @@ import {HttpService} from "./services/http.service";
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    MatFormFieldModule,
+    ReactiveFormsModule
   ],
   providers: [DatatableService, HttpService],
   bootstrap: [AppComponent]
