@@ -15,13 +15,18 @@ export class AuthService {
     private ofAuth: AngularFireAuth,
     private router: Router,
     private snackService: SnackbarService,
-  ) { }
+  ) {
+    const isUserLogged: firebase.User = JSON.parse(<string>localStorage.getItem('user'));
+    if (isUserLogged?.uid)
+      this.user$.next(isUserLogged);
+  }
 
   async singIn(){
     const googleAuthProvider = new firebase.auth.GoogleAuthProvider();
     this.ofAuth.signInWithPopup(googleAuthProvider)
       .then((res) => {
         this.user$.next(res.user);
+        localStorage.setItem('user', JSON.stringify(this.user$.value))
         this.snackService.openSnackBar(`Welcome ${this.user$.value?.displayName}`)
       })
   }
@@ -29,6 +34,7 @@ export class AuthService {
   singOut(){
     this.snackService.openSnackBar(`Good bye ${this.user$.value?.displayName}`)
     this.user$.next(null);
+    localStorage.removeItem('user');
     this.router.navigateByUrl('/login').then(()=> this.ofAuth.signOut());
   }
 }

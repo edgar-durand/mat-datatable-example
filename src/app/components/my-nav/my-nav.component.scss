@@ -16,8 +16,31 @@
   z-index: 1;
 }
 
+.example-spacer {
+  flex: 1 1 auto;
+}
+
 .content{
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 1rem;
+}
+
+.logo{
+  display: flex;
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+}
+
+.username{
+  margin-top: 1rem;
+  margin-left: 1rem;
+}
+.email{
+  margin-top: 0;
+  margin-left: 1rem;
+  padding: 0;
+  font-size: .8rem;
 }

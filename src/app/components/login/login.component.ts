@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {AuthService} from "../../services/auth.service";
 import {takeUntil} from "rxjs/operators";
 import {Subject} from "rxjs";
+import firebase from "firebase/compat";
 
 @Component({
   selector: 'app-login',

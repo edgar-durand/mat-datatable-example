@@ -16,7 +16,9 @@ constructor(
   async canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Promise<boolean | UrlTree> {
-    const user = await this.ofAuth.currentUser;
+    const user = JSON.parse(<string>localStorage.getItem('user')).uid ?
+      JSON.parse(<string>localStorage.getItem('user')) :
+      await this.ofAuth.currentUser;
     const isAuthenticated = !!user
     if (!isAuthenticated) {
       this.snackService.openSnackBar('You must authenticate first to have access');

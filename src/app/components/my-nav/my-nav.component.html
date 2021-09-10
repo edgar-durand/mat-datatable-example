@@ -37,6 +37,14 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>{{breadCrumb | async}}</span>
+      <span class="example-spacer"></span>
+      <div *ngIf="authService.user$ | async" class="content">
+        <img [src]="authService.user$.value?.photoURL" alt="logo" class="logo">
+        <div class="info">
+          <h1 class="username">{{authService.user$.value?.displayName}}</h1>
+          <p class="email">{{authService.user$.value?.email}}</p>
+        </div>
+      </div>
     </mat-toolbar>
 
     <!--    toolbar ends -->
