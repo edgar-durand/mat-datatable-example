@@ -16,7 +16,7 @@ constructor(
   async canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Promise<boolean | UrlTree> {
-    const user = JSON.parse(<string>localStorage.getItem('user')).uid ?
+    const user = JSON.parse(<string>localStorage.getItem('user'))?.uid ?
       JSON.parse(<string>localStorage.getItem('user')) :
       await this.ofAuth.currentUser;
     const isAuthenticated = !!user
