@@ -13,6 +13,13 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {CommentsComponent} from './components/comments/comments.component';
 import {SearchComponent} from './components/search/search.component';
 import {AngularMaterialModule} from "./modules/angular-material/angular-material.module";
+import {LoginComponent} from './components/login/login.component';
+import {SnackbarService} from "./services/snackbar.service";
+import {AngularFireModule} from "@angular/fire/compat";
+import {AngularFireDatabaseModule} from "@angular/fire/compat/database";
+import {environment} from "../environments/environment";
+import {MatCardModule} from "@angular/material/card";
+import {AuthService} from "./services/auth.service";
 
 @NgModule({
   declarations: [
@@ -20,18 +27,22 @@ import {AngularMaterialModule} from "./modules/angular-material/angular-material
     PostsComponent,
     MyNavComponent,
     CommentsComponent,
-    SearchComponent
+    SearchComponent,
+    LoginComponent
   ],
-    imports: [
-        BrowserModule,
-        AngularMaterialModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        LayoutModule,
-        ReactiveFormsModule,
-        FormsModule
-    ],
-  providers: [PostsService, HttpService],
+  imports: [
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    BrowserModule,
+    AngularMaterialModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    LayoutModule,
+    ReactiveFormsModule,
+    FormsModule
+  ],
+  providers: [PostsService, HttpService, SnackbarService, AuthService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}

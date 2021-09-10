@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "posts-14f43": {
+      "hosting": {
+        "datatable": [
+          "posts-14f43"
+        ]
+      }
+    }
+  }
+}

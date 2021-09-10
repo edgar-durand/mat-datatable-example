@@ -1,18 +1,27 @@
 <mat-sidenav-container class="sidenav-container">
 
-<!--  side nav links starts-->
+  <!--  side nav links starts-->
 
   <mat-sidenav #drawer class="sidenav" fixedInViewport
                [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
                [mode]="(isHandset$ | async) ? 'over' : 'side'"
                [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item routerLink="home" fragment="Posts">Posts list</a>
+
+    <mat-nav-list *ngIf="authService.user$ | async">
+      <a mat-list-item routerLink="posts" fragment="Posts">Posts list</a>
+    </mat-nav-list>
+
+    <mat-nav-list *ngIf="authService.user$ | async">
+      <a mat-list-item routerLink="login" (click)="authService.singOut()" fragment="Posts">Log out</a>
+    </mat-nav-list>
+
+    <mat-nav-list *ngIf="!(authService.user$ | async)">
+      <a mat-list-item routerLink="posts" (click)="authService.singIn()" fragment="Posts">Log in</a>
     </mat-nav-list>
   </mat-sidenav>
 
-<!--  side nav links ends-->
+  <!--  side nav links ends-->
 
   <mat-sidenav-content>
 
@@ -33,7 +42,9 @@
     <!--    toolbar ends -->
 
     <!--    router outlet starts-->
-    <router-outlet></router-outlet>
+    <div class="content">
+      <router-outlet></router-outlet>
+    </div>
     <!--    router outlet ends-->
 
 
