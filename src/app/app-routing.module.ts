@@ -1,16 +1,16 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {SampleTableComponent} from "./sample-table/sample-table.component";
-import {LoadXlsxComponent} from "./load-xlsx/load-xlsx.component";
+import {PostsComponent} from "./components/posts/posts.component";
+import {CommentsComponent} from "./components/comments/comments.component";
 
 const routes: Routes = [
   {
     path: 'home',
-    component: SampleTableComponent,
+    component: PostsComponent,
   },
   {
-    path: 'xlsx',
-    component: LoadXlsxComponent,
+    path: 'comments/:id',
+    component: CommentsComponent,
   },
   {
     path: '**',

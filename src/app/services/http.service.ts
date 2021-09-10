@@ -1,5 +1,4 @@
-import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {Injectable} from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
@@ -10,13 +9,18 @@ export class HttpService {
 
   async get(url: string, requestInit?: RequestInit): Promise<any> {
     requestInit = {
-      method: 'get',
+      method: 'GET',
       headers: {
         ContentType: 'application/json',
       },
       ...requestInit,
     };
 
-    return await fetch(url, requestInit);
+    try {
+      return await fetch(url, requestInit);
+    }catch (e) {
+      return []
+    }
+
   }
 }

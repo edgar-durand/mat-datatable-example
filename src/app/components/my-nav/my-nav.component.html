@@ -1,17 +1,23 @@
 <mat-sidenav-container class="sidenav-container">
+
+<!--  side nav links starts-->
+
   <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
     <mat-toolbar>Menu</mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item routerLink="home" fragment="DataTable">Sample DataTable</a>
-    </mat-nav-list>
-    <mat-nav-list>
-      <a mat-list-item routerLink="xlsx" fragment="XLS">Load Excel</a>
+      <a mat-list-item routerLink="home" fragment="Posts">Posts list</a>
     </mat-nav-list>
   </mat-sidenav>
+
+<!--  side nav links ends-->
+
   <mat-sidenav-content>
+
+    <!--    toolbar starts-->
+
     <mat-toolbar color="primary">
       <button
         type="button"
@@ -23,7 +29,13 @@
       </button>
       <span>{{breadCrumb | async}}</span>
     </mat-toolbar>
+
+    <!--    toolbar ends -->
+
+    <!--    router outlet starts-->
     <router-outlet></router-outlet>
-    <!-- Add Content Here -->
+    <!--    router outlet ends-->
+
+
   </mat-sidenav-content>
 </mat-sidenav-container>

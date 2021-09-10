@@ -1,8 +1,8 @@
-import { Component } from '@angular/core';
-import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Observable } from 'rxjs';
-import { map, shareReplay } from 'rxjs/operators';
-import {ActivatedRoute, Router} from "@angular/router";
+import {Component} from '@angular/core';
+import {BreakpointObserver, Breakpoints} from '@angular/cdk/layout';
+import {Observable} from 'rxjs';
+import {map, shareReplay} from 'rxjs/operators';
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-my-nav',
@@ -17,7 +17,10 @@ export class MyNavComponent {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver, private router: ActivatedRoute) {
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private router: ActivatedRoute,
+  ) {
     this.router.params.subscribe(() => {
       this.breadCrumb = this.router.fragment;
     })
